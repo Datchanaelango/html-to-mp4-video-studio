@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberpunk HUD Reel</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle at center, #110d24 0%, #06040e 100%);
+      color: #00f2fe;
+      font-family: 'Courier New', Courier, monospace;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 3rem 1.5rem;
+    }
+    .hud-header {
+      text-align: center;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #00ff88;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ff88;
+      margin-right: 8px;
+      animation: blink 1s infinite alternate;
+    }
+    .title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
+      letter-spacing: 4px;
+      margin-top: 10px;
+    }
+    .ring-container {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ring {
+      position: absolute;
+      border: 3px dashed #ff007f;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      animation: rotateRing 8s linear infinite;
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+    }
+    .ring-inner {
+      position: absolute;
+      border: 2px solid #00f2fe;
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      width: 75%;
+      height: 75%;
+      animation: rotateRingRev 4s linear infinite;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+    }
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 20px #00f2fe;
+    }
+    .bars {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      height: 120px;
+      width: 80%;
+      max-width: 320px;
+    }
+    .bar {
+      flex: 1;
+      background: linear-gradient(to top, #ff007f, #00f2fe);
+      border-radius: 4px;
+      animation: wave 1.2s ease-in-out infinite alternate;
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+    }
+    .bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+    .bar:nth-child(2) { height: 75%; animation-delay: 0.3s; }
+    .bar:nth-child(3) { height: 90%; animation-delay: 0.5s; }
+    .bar:nth-child(4) { height: 60%; animation-delay: 0.2s; }
+    .bar:nth-child(5) { height: 85%; animation-delay: 0.4s; }
+    .bar:nth-child(6) { height: 50%; animation-delay: 0.6s; }
+
+    @keyframes rotateRing { 100% { transform: rotate(360deg); } }
+    @keyframes rotateRingRev { 100% { transform: rotate(-360deg); } }
+    @keyframes blink { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+    @keyframes wave {
+      0% { transform: scaleY(0.4); }
+      100% { transform: scaleY(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hud-header">
+    <div><span class="status-dot"></span>SYSTEM ONLINE</div>
+    <div class="title">CYBERCORE</div>
+  </div>
+
+  <div class="ring-container">
+    <div class="ring"></div>
+    <div class="ring-inner"></div>
+    <div class="stat-number" id="counter">98%</div>
+  </div>
+
+  <div class="bars">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div style="font-size: 0.85rem; letter-spacing: 2px; color: #a5b4fc; text-align: center;">
+    HTML VIDEO EXPORT DEMO // VERTICAL 9:16
+  </div>
+
+  <script>
+    let count = 0;
+    const el = document.getElementById('counter');
+    setInterval(() => {
+      count = (count + 1) % 100;
+      el.innerText = count + '%';
+    }, 80);
+  </script>
+</body>
+</html>
