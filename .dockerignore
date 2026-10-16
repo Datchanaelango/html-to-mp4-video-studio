@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+uploads/*
+!uploads/.gitkeep
+outputs/*
+!outputs/.gitkeep
+.git
+.gitignore
+.env

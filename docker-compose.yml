@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  html-to-mp4:
+    build: .
+    container_name: html-to-mp4-studio
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    restart: unless-stopped
+    volumes:
+      - ./outputs:/app/outputs

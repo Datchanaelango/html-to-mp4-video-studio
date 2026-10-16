@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Runtime uploads and outputs
+uploads/*
+!uploads/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# Environment & Logs
+.env
+.env.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor folders
+.vscode/
+.idea/
